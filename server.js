@@ -60,13 +60,11 @@ const errorMiddleware = require('./middleware/errorMiddleware');
 app.use(errorMiddleware);
 
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📝 Environment: ${process.env.NODE_ENV}`);
-  console.log(`🔗 http://localhost:${PORT}`);
-<<<<<<< HEAD
-});
-=======
-});
->>>>>>> b3773dd29d9d2f84bff200025f935336836e2afa
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`📝 Environment: ${process.env.NODE_ENV}`);
+        console.log(`🔗 http://localhost:${PORT}`);
+    });
+}
